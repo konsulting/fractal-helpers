@@ -7,18 +7,22 @@
             "email": "robin@klever.co.uk"
         }
     ],
-    "require": {},
+    "require": {
+        "illuminate/contracts": "~5.5.0|~5.6.0",
+        "illuminate/support": "~5.5.0|~5.6.0",
+        "spatie/fractalistic": "^2.5"
+    },
     "require-dev": {
         "phpunit/phpunit": "^7.2"
     },
     "autoload": {
         "psr-4": {
-            "rdarcy1\\FractalHelpers\\": "src"
+            "Rdarcy1\\FractalHelpers\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "rdarcy1\\FractalHelpers\\Tests\\": "tests"
+            "Rdarcy1\\FractalHelpers\\Tests\\": "tests"
         }
     }
 }

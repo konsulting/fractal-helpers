@@ -1,11 +1,12 @@
 <?php
 
-namespace Spatie\Fractal\Test;
+namespace Rdarcy1\FractalHelpers\Test;
 
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use League\Fractal\Resource\Collection;
-use Spatie\Fractal\TransformerAbstract;
+use PHPUnit\Framework\TestCase;
+use Rdarcy1\FractalHelpers\TransformerAbstract;
 
 class TransformerAbstractTest extends TestCase
 {

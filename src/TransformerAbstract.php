@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Fractal;
+namespace Rdarcy1\FractalHelpers;
 
 use Illuminate\Support\Str;
 use League\Fractal\Resource\Item;
