@@ -1,0 +1,24 @@
+{
+    "name": "rdarcy1/fractal-helpers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robin D'Arcy",
+            "email": "robin@klever.co.uk"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "rdarcy1\\FractalHelpers\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "rdarcy1\\FractalHelpers\\Tests\\": "tests"
+        }
+    }
+}
