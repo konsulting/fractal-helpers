@@ -1,12 +1,15 @@
 <?php
 
-namespace Rdarcy1\FractalHelpers\Test;
+namespace Rdarcy1\FractalHelpers\Tests;
 
 use League\Fractal\Manager;
+use PHPUnit\Framework\TestCase;
 use League\Fractal\Resource\Item;
 use League\Fractal\Resource\Collection;
-use PHPUnit\Framework\TestCase;
-use Rdarcy1\FractalHelpers\TransformerAbstract;
+use Rdarcy1\FractalHelpers\Tests\Stubs\Models\Book;
+use Rdarcy1\FractalHelpers\Tests\Stubs\Transformers\BookTransformer;
+use Rdarcy1\FractalHelpers\Tests\Stubs\Transformers\AuthorTransformer;
+use Rdarcy1\FractalHelpers\Tests\Stubs\Transformers\MainCharacterTransformer;
 
 class TransformerAbstractTest extends TestCase
 {
@@ -89,46 +92,3 @@ class TransformerAbstractTest extends TestCase
         $this->assertEquals($expected, $output);
     }
 }
-
-class BookTransformer extends TransformerAbstract
-{
-    protected $itemIncludes = ['author' => AuthorTransformer::class];
-
-    protected $collectionIncludes = ['main_characters' => MainCharacterTransformer::class];
-
-    protected $availableIncludes = ['words'];
-
-    public function transform($resource)
-    {
-        return ['field' => 'Transformed book'];
-    }
-}
-
-class MainCharacterTransformer extends TransformerAbstract
-{
-    public function transform($resource)
-    {
-        return ['field' => 'Transformed character'];
-    }
-}
-
-class AuthorTransformer extends TransformerAbstract
-{
-    public function transform($resource)
-    {
-        return ['field' => 'Transformed author'];
-    }
-}
-
-class Book
-{
-    public $author;
-    public $main_characters;
-
-    public function __construct()
-    {
-        $this->author = new \stdclass;
-        $this->main_characters = [1, 2];
-    }
-}
-
