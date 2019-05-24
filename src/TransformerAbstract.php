@@ -45,24 +45,34 @@ abstract class TransformerAbstract extends FractalTransformer
         $relation = Str::snake(preg_replace('/^include/', '', $method));
 
         if (array_key_exists($relation, $this->itemIncludes)) {
-            $relatedResource = $baseResource->{$relation};
-            if ($relatedResource === null) {
-                return $this->null();
-            }
-
-            return $this->item($relatedResource, new $this->itemIncludes[$relation]);
+            return $this->getFractalResource('item', $relation, $baseResource);
         }
 
         if (array_key_exists($relation, $this->collectionIncludes)) {
-            $relatedResource = $baseResource->{$relation};
-            if ($relatedResource === null) {
-                return $this->null();
-            }
-
-            return $this->collection(
-                $baseResource->{$relation}, new $this->collectionIncludes[$relation]);
+            return $this->getFractalResource('collection', $relation, $baseResource);
         }
 
         throw new \BadMethodCallException('Unknown method "' . $method . '" called on ' . static::class . '.');
+    }
+
+    /**
+     * Get the correct Fractal resource object for the related resource. Return a null resource object if the
+     * relationship is null.
+     *
+     * @param string $type
+     * @param string $relation
+     * @param mixed  $baseResource
+     * @return ResourceAbstract
+     */
+    protected function getFractalResource(string $type, string $relation, $baseResource)
+    {
+        $relatedResource = $baseResource->{$relation};
+        if ($relatedResource === null) {
+            return $this->null();
+        }
+
+        $transformer = new $this->{$type . 'Includes'}[$relation];
+
+        return $this->$type($relatedResource, $transformer);
     }
 }
