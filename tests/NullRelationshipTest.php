@@ -14,13 +14,14 @@ class NullRelationshipTest extends TestCase
     {
         $resource = new Item(new Book, new BookTransformer);
         $result = (new Manager)
-            ->parseIncludes('null_item_relationship')
+            ->parseIncludes('null_item_relationship,null_collection_relationship')
             ->createData($resource)
             ->toArray();
 
         $this->assertArraySubset([
             'data' => [
-                'null_item_relationship' => ['data' => []],
+                'null_item_relationship'       => ['data' => []],
+                'null_collection_relationship' => ['data' => []],
             ],
         ], $result);
     }

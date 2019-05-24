@@ -8,6 +8,7 @@ class Book
     public $main_characters;
 
     public $null_item_relationship = null;
+    public $null_collection_relationship = null;
 
     public function __construct()
     {

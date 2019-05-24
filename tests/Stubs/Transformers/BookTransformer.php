@@ -7,11 +7,14 @@ use Rdarcy1\FractalHelpers\TransformerAbstract;
 class BookTransformer extends TransformerAbstract
 {
     protected $itemIncludes = [
-        'author' => AuthorTransformer::class,
+        'author'                 => AuthorTransformer::class,
         'null_item_relationship' => 'Dummy\\Namespace',
     ];
 
-    protected $collectionIncludes = ['main_characters' => MainCharacterTransformer::class];
+    protected $collectionIncludes = [
+        'main_characters'              => MainCharacterTransformer::class,
+        'null_collection_relationship' => 'Dummy\\Namespace',
+    ];
 
     protected $availableIncludes = ['words'];
 

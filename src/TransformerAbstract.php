@@ -54,6 +54,11 @@ abstract class TransformerAbstract extends FractalTransformer
         }
 
         if (array_key_exists($relation, $this->collectionIncludes)) {
+            $relatedResource = $baseResource->{$relation};
+            if ($relatedResource === null) {
+                return $this->null();
+            }
+
             return $this->collection(
                 $baseResource->{$relation}, new $this->collectionIncludes[$relation]);
         }
