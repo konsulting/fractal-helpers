@@ -7,6 +7,8 @@ class Book
     public $author;
     public $main_characters;
 
+    public $null_item_relationship = null;
+
     public function __construct()
     {
         $this->author = new \stdclass;

@@ -2,9 +2,8 @@
 
 namespace Rdarcy1\FractalHelpers;
 
-use League\Fractal\Resource\Item;
 use IlluminateAgnostic\Str\Support\Str;
-use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\ResourceAbstract;
 use League\Fractal\TransformerAbstract as FractalTransformer;
 
 abstract class TransformerAbstract extends FractalTransformer
@@ -38,20 +37,25 @@ abstract class TransformerAbstract extends FractalTransformer
      *
      * @param string $method
      * @param array  $arguments
-     * @return Collection|Item
+     * @return ResourceAbstract
      */
     public function __call($method, $arguments)
     {
         $baseResource = $arguments[0] ?? null;
-        $relatedResource = Str::snake(preg_replace('/^include/', '', $method));
+        $relation = Str::snake(preg_replace('/^include/', '', $method));
 
-        if (array_key_exists($relatedResource, $this->itemIncludes)) {
-            return $this->item($baseResource->{$relatedResource}, new $this->itemIncludes[$relatedResource]);
+        if (array_key_exists($relation, $this->itemIncludes)) {
+            $relatedResource = $baseResource->{$relation};
+            if ($relatedResource === null) {
+                return $this->null();
+            }
+
+            return $this->item($relatedResource, new $this->itemIncludes[$relation]);
         }
 
-        if (array_key_exists($relatedResource, $this->collectionIncludes)) {
+        if (array_key_exists($relation, $this->collectionIncludes)) {
             return $this->collection(
-                $baseResource->{$relatedResource}, new $this->collectionIncludes[$relatedResource]);
+                $baseResource->{$relation}, new $this->collectionIncludes[$relation]);
         }
 
         throw new \BadMethodCallException('Unknown method "' . $method . '" called on ' . static::class . '.');

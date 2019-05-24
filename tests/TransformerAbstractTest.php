@@ -18,7 +18,7 @@ class TransformerAbstractTest extends TestCase
     {
         $transformer = new BookTransformer;
 
-        $this->assertEquals(['words', 'author', 'main_characters'], $transformer->getAvailableIncludes());
+        $this->assertEmpty(array_diff(['words', 'author', 'main_characters'], $transformer->getAvailableIncludes()));
     }
 
     /** @test */
