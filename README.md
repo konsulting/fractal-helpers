@@ -1,9 +1,11 @@
 # Fractal Helpers
-A small extension for (Fractal)[https://fractal.thephpleague.com] that makes it easy to include relationships on a resource.
+A small extension for [Fractal](https://fractal.thephpleague.com) that makes it easy to include relationships on a resource.
 Designed for use with Laravel/Eloquent, but it will work with any model or resource that expresses the same interface for retrieving relationships.
 
 ## Installation
-`composer require konsulting/fractal-helpers`
+```
+composer require konsulting/fractal-helpers
+```
 
 ## Usage
 To make use of this package, in your transformers extend `Konsulting\FractalHelpers\TransformerAbstract` rather than the base Fractal transformer.
