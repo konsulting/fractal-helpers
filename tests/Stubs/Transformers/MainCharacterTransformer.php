@@ -1,8 +1,8 @@
 <?php
 
-namespace Rdarcy1\FractalHelpers\Tests\Stubs\Transformers;
+namespace Konsulting\FractalHelpers\Tests\Stubs\Transformers;
 
-use Rdarcy1\FractalHelpers\TransformerAbstract;
+use Konsulting\FractalHelpers\TransformerAbstract;
 
 class MainCharacterTransformer extends TransformerAbstract
 {

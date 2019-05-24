@@ -1,6 +1,6 @@
 <?php
 
-namespace Rdarcy1\FractalHelpers\Tests\Stubs\Models;
+namespace Konsulting\FractalHelpers\Tests\Stubs\Models;
 
 class Book
 {

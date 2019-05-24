@@ -1,6 +1,6 @@
 <?php
 
-namespace Rdarcy1\FractalHelpers;
+namespace Konsulting\FractalHelpers;
 
 use IlluminateAgnostic\Str\Support\Str;
 use League\Fractal\Resource\ResourceAbstract;
@@ -64,7 +64,7 @@ abstract class TransformerAbstract extends FractalTransformer
      */
     private function getFractalResource(string $type, string $relation, $baseResource)
     {
-        $relatedResource = $baseResource->{$relation};
+        $relatedResource = $baseResource->$relation;
         if ($relatedResource === null) {
             return $this->null();
         }

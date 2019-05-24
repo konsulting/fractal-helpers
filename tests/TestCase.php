@@ -1,6 +1,6 @@
 <?php
 
-namespace Rdarcy1\FractalHelpers\Tests;
+namespace Konsulting\FractalHelpers\Tests;
 
 use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 

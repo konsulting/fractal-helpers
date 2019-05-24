@@ -1,14 +1,14 @@
 <?php
 
-namespace Rdarcy1\FractalHelpers\Tests;
+namespace Konsulting\FractalHelpers\Tests;
 
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use League\Fractal\Resource\Collection;
-use Rdarcy1\FractalHelpers\Tests\Stubs\Models\Book;
-use Rdarcy1\FractalHelpers\Tests\Stubs\Transformers\BookTransformer;
-use Rdarcy1\FractalHelpers\Tests\Stubs\Transformers\AuthorTransformer;
-use Rdarcy1\FractalHelpers\Tests\Stubs\Transformers\MainCharacterTransformer;
+use Konsulting\FractalHelpers\Tests\Stubs\Models\Book;
+use Konsulting\FractalHelpers\Tests\Stubs\Transformers\BookTransformer;
+use Konsulting\FractalHelpers\Tests\Stubs\Transformers\AuthorTransformer;
+use Konsulting\FractalHelpers\Tests\Stubs\Transformers\MainCharacterTransformer;
 
 class TransformerAbstractTest extends TestCase
 {

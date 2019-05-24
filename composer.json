@@ -1,5 +1,5 @@
 {
-    "name": "rdarcy1/fractal-helpers",
+    "name": "konsulting/fractal-helpers",
     "license": "MIT",
     "authors": [
         {
@@ -17,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rdarcy1\\FractalHelpers\\": "src"
+            "Konsulting\\FractalHelpers\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rdarcy1\\FractalHelpers\\Tests\\": "tests"
+            "Konsulting\\FractalHelpers\\Tests\\": "tests"
         }
     }
 }
