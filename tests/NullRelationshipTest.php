@@ -3,7 +3,6 @@
 namespace Rdarcy1\FractalHelpers\Tests;
 
 use League\Fractal\Manager;
-use PHPUnit\Framework\TestCase;
 use League\Fractal\Resource\Item;
 use Rdarcy1\FractalHelpers\Tests\Stubs\Models\Book;
 use Rdarcy1\FractalHelpers\Tests\Stubs\Transformers\BookTransformer;
