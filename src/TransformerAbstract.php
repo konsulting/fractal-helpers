@@ -44,12 +44,10 @@ abstract class TransformerAbstract extends FractalTransformer
         $baseResource = $arguments[0] ?? null;
         $relation = Str::snake(preg_replace('/^include/', '', $method));
 
-        if (array_key_exists($relation, $this->itemIncludes)) {
-            return $this->getFractalResource('item', $relation, $baseResource);
-        }
-
-        if (array_key_exists($relation, $this->collectionIncludes)) {
-            return $this->getFractalResource('collection', $relation, $baseResource);
+        foreach (['item', 'collection'] as $type) {
+            if (array_key_exists($relation, $this->{$type . 'Includes'})) {
+                return $this->getFractalResource($type, $relation, $baseResource);
+            }
         }
 
         throw new \BadMethodCallException('Unknown method "' . $method . '" called on ' . static::class . '.');
@@ -64,7 +62,7 @@ abstract class TransformerAbstract extends FractalTransformer
      * @param mixed  $baseResource
      * @return ResourceAbstract
      */
-    protected function getFractalResource(string $type, string $relation, $baseResource)
+    private function getFractalResource(string $type, string $relation, $baseResource)
     {
         $relatedResource = $baseResource->{$relation};
         if ($relatedResource === null) {
