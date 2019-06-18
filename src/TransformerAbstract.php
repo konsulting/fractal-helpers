@@ -64,7 +64,8 @@ abstract class TransformerAbstract extends FractalTransformer
      */
     private function getFractalResource(string $type, string $relation, $baseResource)
     {
-        $relatedResource = $baseResource->$relation;
+        $relatedResource = $this->getRelatedResource($relation, $baseResource);
+
         if ($relatedResource === null) {
             return $this->null();
         }
@@ -72,5 +73,25 @@ abstract class TransformerAbstract extends FractalTransformer
         $transformer = new $this->{$type . 'Includes'}[$relation];
 
         return $this->$type($relatedResource, $transformer);
+    }
+
+    /**
+     * If a method is defined on the transformer with the same name as the relationship, try to get the builder from
+     * the base resource and pass it to that method. If not, get the related resource as a public property of the base
+     * resource.
+     *
+     * @param string $relation
+     * @param mixed  $baseResource
+     * @return mixed
+     */
+    private function getRelatedResource(string $relation, $baseResource)
+    {
+        if (! method_exists($this, $relation)) {
+            return $baseResource->$relation;
+        }
+
+        $builder = $baseResource->$relation();
+
+        return $this->$relation($builder);
     }
 }
