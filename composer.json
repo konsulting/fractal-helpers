@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "league/fractal": "^0.17|^0.18",
+        "league/fractal": "^0.17|^0.18|^0.19",
         "pragmarx/ia-str": "^5.8"
     },
     "require-dev": {
