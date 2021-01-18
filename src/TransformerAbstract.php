@@ -70,9 +70,20 @@ abstract class TransformerAbstract extends FractalTransformer
             return $this->null();
         }
 
-        $transformer = new $this->{$type . 'Includes'}[$relation];
+        $transformer = $this->makeTransformer($this->{$type . 'Includes'}[$relation]);
 
         return $this->$type($relatedResource, $transformer);
+    }
+
+    /**
+     * Instantiate the transformer for the relation. This method may be overridden.
+     *
+     * @param string $class
+     * @return \League\Fractal\TransformerAbstract
+     */
+    protected function makeTransformer(string $class)
+    {
+        return new $class;
     }
 
     /**
